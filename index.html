@@ -4,22 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="JARVIS">
-<meta name="theme-color" content="#000000">
-<title>J.A.R.V.I.S</title>
-<link rel="apple-touch-icon" id="ati" href="">
-<link rel="manifest" id="mf">
+<title>J.A.R.V.I.S 6.0 - ARREGLADO V3</title>
 <style>
-:root{--c:#00d8ff;--c2:#0a6cff;--bg:#000}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+:root{--c:#00d8ff;--c2:#0a6cff}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
 html,body{margin:0;height:100%;background:#000;color:var(--c);font-family:"SF Mono",Menlo,Consolas,monospace;overflow:hidden;touch-action:none}
 #grid{position:fixed;inset:-60px;background:linear-gradient(rgba(0,140,255,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(0,140,255,.16) 1px,transparent 1px);background-size:50px 50px;animation:gm 6s linear infinite;mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%);-webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 80%)}
 @keyframes gm{to{transform:translate(50px,50px)}}
 #scan{position:fixed;left:0;right:0;height:120px;background:linear-gradient(transparent,rgba(0,216,255,.07),transparent);animation:sc 5s linear infinite;pointer-events:none}
 @keyframes sc{from{top:-120px}to{top:100%}}
-.win{position:absolute;width:min(27vw,300px);padding:14px 16px;border:1px solid rgba(0,216,255,.55);background:rgba(0,20,40,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 18px rgba(0,160,255,.35),inset 0 0 22px rgba(0,120,255,.15);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));touch-action:none;z-index:5}
+.win{position:absolute;width:min(28vw,310px);padding:14px 16px;border:1px solid rgba(0,216,255,.55);background:rgba(0,20,40,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 18px rgba(0,160,255,.35),inset 0 0 22px rgba(0,120,255,.15);clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));touch-action:none;z-index:5}
 .win h3{margin:0 0 8px;font-size:11px;letter-spacing:.3em;color:#7fe9ff;border-bottom:1px solid rgba(0,216,255,.3);padding-bottom:6px;display:flex;justify-content:space-between}
 .win h3 b{cursor:pointer;color:#ff6b6b}
 #wl{left:2.5%;top:9%}#wr{right:2.5%;top:9%}
@@ -34,103 +28,86 @@ html,body{margin:0;height:100%;background:#000;color:var(--c);font-family:"SF Mo
 #core{position:absolute;left:50%;top:45%;width:min(62vh,46vw);aspect-ratio:1;transform:translate(-50%,-50%);z-index:2}
 #cv{width:100%;height:100%}
 #title{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:clamp(14px,2.4vw,26px);letter-spacing:.5em;text-shadow:0 0 16px var(--c);pointer-events:none;padding-left:.5em}
-#sub{position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);width:130%;text-align:center;font-size:14px;color:#bff4ff;min-height:40px;text-shadow:0 0 8px var(--c)}
+#sub{position:absolute;left:50%;bottom:-6%;transform:translateX(-50%);width:135%;text-align:center;font-size:14px;color:#bff4ff;min-height:40px;text-shadow:0 0 8px var(--c)}
 #sub small{display:block;color:#5fb9d6;font-size:12px;margin-bottom:4px}
-#bar{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:0 10px;z-index:8}
-button{font:inherit;font-size:12px;letter-spacing:.14em;color:var(--c);background:rgba(0,30,60,.7);border:1px solid var(--c);padding:12px 16px;cursor:pointer;box-shadow:0 0 12px rgba(0,200,255,.35);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+#bar{position:fixed;left:0;right:0;bottom:max(14px,env(safe-area-inset-bottom));display:flex;gap:7px;justify-content:center;flex-wrap:wrap;padding:0 10px;z-index:8}
+button{font:inherit;font-size:11px;letter-spacing:.13em;color:var(--c);background:rgba(0,30,60,.7);border:1px solid var(--c);padding:11px 14px;cursor:pointer;box-shadow:0 0 12px rgba(0,200,255,.35);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
 button.on{background:var(--c);color:#001018;font-weight:700}
 button:active{transform:scale(.96)}
 #hand{position:fixed;left:0;top:0;width:60px;height:60px;border:2px dashed var(--c);border-radius:50%;display:none;pointer-events:none;z-index:50;box-shadow:0 0 16px var(--c)}
-#hand.open{background:rgba(0,216,255,.25)}#hand.grab{background:rgba(0,216,255,.6);border-style:solid}
-#cam{position:fixed;left:10px;bottom:70px;width:120px;transform:scaleX(-1);opacity:.55;border:1px solid var(--c);display:none;z-index:4}
 #boot,#modal{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;display:flex;align-items:center;justify-content:center;text-align:center}
 #modal{display:none;z-index:90;background:rgba(0,0,0,.8)}
-.box{max-width:640px;width:92%;max-height:88vh;overflow:auto;border:1px solid var(--c);padding:20px;background:rgba(0,18,36,.95);box-shadow:0 0 30px rgba(0,160,255,.4);text-align:left;font-size:14px;line-height:1.55;user-select:text;-webkit-user-select:text;touch-action:pan-y}
+.box{max-width:680px;width:92%;max-height:88vh;overflow:auto;border:1px solid var(--c);padding:20px;background:rgba(0,18,36,.95);box-shadow:0 0 30px rgba(0,160,255,.4);text-align:left;font-size:14px;line-height:1.55;user-select:text;-webkit-user-select:text;touch-action:pan-y}
 .box h2{margin:0 0 10px;letter-spacing:.25em;font-size:14px}.box ol{padding-left:20px}.box code{color:#fff}
 input{font:inherit;background:#001a2e;color:#fff;border:1px solid var(--c);padding:9px;width:60%;user-select:text;-webkit-user-select:text}
 #boot h1{font-size:clamp(28px,6vw,60px);letter-spacing:.4em;text-shadow:0 0 24px var(--c);margin:0 0 20px}
 #vid{width:100%;display:block;margin-top:4px}
+#mediaLayer{position:fixed;inset:0;z-index:15;display:none;background:rgba(0,0,0,.92);align-items:center;justify-content:center;flex-direction:column;padding:20px}
+#mediaLayer.show{display:flex}
+#vPlayer{max-width:92%;max-height:70vh;border:1px solid var(--c);box-shadow:0 0 30px var(--c);display:none}
+#aPlayer{width:90%;max-width:500px;display:none;margin-top:20px}
+#imgPlayer{max-width:92%;max-height:75vh;border:1px solid var(--c);display:none;box-shadow:0 0 30px var(--c)}
+#mediaInfo{color:var(--c);margin-top:12px;font-size:12px;letter-spacing:.2em;text-align:center}
+#mediaClose{position:absolute;top:15px;right:15px;background:rgba(0,0,0,.7);border:1px solid var(--c);color:var(--c);padding:8px 12px;cursor:pointer}
+#dropZone{position:fixed;inset:0;background:rgba(0,216,255,.15);border:3px dashed var(--c);z-index:200;display:none;align-items:center;justify-content:center;font-size:20px;color:var(--c)}
 </style>
 </head>
 <body>
 <div id="grid"></div><div id="scan"></div>
+<div id="mediaLayer">
+ <button id="mediaClose" onclick="cerrarMedia()">â CERRAR</button>
+ <video id="vPlayer" controls playsinline></video>
+ <audio id="aPlayer" controls></audio>
+ <img id="imgPlayer">
+ <div id="mediaInfo"></div>
+ <div id="mediaList" style="margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-height:22vh;overflow:auto"></div>
+</div>
+<div id="dropZone">Suelta fotos, videos o documentos aquÃ­, SeÃ±or</div>
+<input type="file" id="fotosInput" accept="image/*,video/*,audio/*,.pdf,.doc,.docx,.txt,.zip,.mp3,.mp4,.mov,.m4a,.wav,.ogg" multiple style="display:none">
 <main>
  <section class="win" id="wl"><h3>SISTEMA</h3><div id="time">--:--</div><div class="row"><span id="date">--</span></div>
   <h3 style="margin-top:12px">CLIMA</h3><div class="row"><span>Estado</span><span id="wx">--</span></div><div class="row"><span>Temp</span><span id="tp">--</span></div><div class="row"><span>Humedad / Viento</span><span id="hu">--</span></div>
-  <h3 style="margin-top:12px">ENERGÍA</h3><div class="row"><span>Batería</span><span id="bt">N/D</span></div><div class="row"><span>IA local</span><span id="ai">Offline</span></div></section>
+  <h3 style="margin-top:12px">ENERGÃA</h3><div class="row"><span>BaterÃ­a</span><span id="bt">N/D</span></div><div class="row"><span>IA local</span><span id="ai">Offline</span></div><div class="row"><span>Archivos</span><span id="fileCount">0</span></div></section>
  <section id="core"><canvas id="cv"></canvas><div id="title">J.A.R.V.I.S</div><div id="sub"><small id="heard"></small><span id="say">Sistemas en espera.</span></div></section>
- <section class="win" id="wr"><h3>CASA</h3><div id="devs"></div><h3 style="margin-top:12px">MÚSICA</h3><div class="row"><span id="mus">Detenida</span><span id="mbtn" style="cursor:pointer;color:#fff">▶ / ❚❚</span></div><div id="bars"></div></section>
+ <section class="win" id="wr"><h3>CASA</h3><div id="devs"></div><h3 style="margin-top:12px">MÃSICA</h3><div class="row"><span id="mus">Detenida</span><span id="mbtn" style="cursor:pointer;color:#fff">â¶ / ââ</span></div><div id="bars"></div></section>
 </main>
 <nav id="bar">
- <button id="bHey">HEY JARVIS</button><button id="bScr">VER PANTALLA</button><button id="bCasa">CONTROLAR CASA</button><button id="bIpad">CONTROLAR IPAD</button><button id="bGes">GESTOS</button><button id="bAI">IA LOCAL</button><button id="bInst">INSTALAR</button>
+ <button id="bHey">HEY JARVIS</button><button onclick="abrirArchivos()">ð ARCHIVOS</button><button id="bScr">VER</button><button id="bCasa">CASA</button><button id="bIpad">IPAD</button><button id="bGes">GESTOS</button><button id="bAI">IA LOCAL</button><button id="bInst">INSTALAR</button>
 </nav>
-<div id="hand"></div><video id="cam" muted playsinline></video>
+<div id="hand"></div><video id="cam" muted playsinline style="display:none"></video>
 <div id="modal"><div class="box" id="mbox"></div></div>
-<div id="boot"><div><h1>J.A.R.V.I.S</h1><button id="bStart" style="font-size:16px;padding:16px 30px">TOCAR PARA INICIAR</button></div></div>
-
+<div id="boot"><div><h1>J.A.R.V.I.S</h1><p style="color:#7fe9ff;font-size:11px;letter-spacing:.2em">6.0 ARREGLADO V3 â¢ IA + ARCHIVOS + REPRODUCTOR â¢ TODO FLUIDO</p><br><button id="bStart" style="font-size:16px;padding:16px 30px">TOCAR PARA INICIAR</button></div></div>
 <script>
-/* ============ CONFIGURACIÓN DE TUS ATAJOS (CONECTA AQUÍ) ============
- Crea en la app Atajos de iOS un atajo por cada nombre de abajo, con la acción
- "Controlar mi casa" (HomeKit). El nombre del atajo debe ser IDÉNTICO (mayúsculas y acentos).
- Ejemplo: atajo "Encender Taller" -> Controlar [Luz del taller] -> Encender.
- Puedes cambiar/añadir dispositivos aquí o con el botón CONTROLAR CASA. */
-const ATAJOS = {
-  'taller': {on:'Encender Taller', off:'Apagar Taller'},
-  'sala':   {on:'Encender Sala',   off:'Apagar Sala'},
-  'cuarto': {on:'Encender Cuarto', off:'Apagar Cuarto'},
-  'todo':   {on:'Encender Todo',   off:'Apagar Todo'}
-};
-/* ===================================================================== */
-
+const ATAJOS={'taller':{on:'Encender Taller',off:'Apagar Taller'},'sala':{on:'Encender Sala',off:'Apagar Sala'},'cuarto':{on:'Encender Cuarto',off:'Apagar Cuarto'},'todo':{on:'Encender Todo',off:'Apagar Todo'}};
 const $=s=>document.querySelector(s);
 const N=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const LS={get:(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch{return d}},set:(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
-let user=LS.get('jv_name','Señor'), extra=LS.get('jv_dev',{}), state=LS.get('jv_state',{});
-const addr=()=>user==='Señor'?'señor':user;
+let user=LS.get('jv_name','SeÃ±or'), extra=LS.get('jv_dev',{}), state=LS.get('jv_state',{});
+const addr=()=>user==='SeÃ±or'?'seÃ±or':user;
 const devs=()=>Object.assign({},ATAJOS,extra);
 const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
-
-/* ---------- PWA: manifest e icono generados por JS (un solo archivo) ---------- */
-function icon(sz){const c=document.createElement('canvas');c.width=c.height=sz;const x=c.getContext('2d');x.fillStyle='#000';x.fillRect(0,0,sz,sz);x.strokeStyle='#00d8ff';x.shadowColor='#00d8ff';x.shadowBlur=sz*.06;x.lineWidth=sz*.04;x.beginPath();x.arc(sz/2,sz/2,sz*.3,0,7);x.stroke();x.lineWidth=sz*.015;x.beginPath();x.arc(sz/2,sz/2,sz*.38,0,4.5);x.stroke();x.fillStyle='#00d8ff';x.beginPath();x.arc(sz/2,sz/2,sz*.07,0,7);x.fill();return c.toDataURL('image/png')}
-$('#ati').href=icon(180);
-$('#mf').href=URL.createObjectURL(new Blob([JSON.stringify({name:'J.A.R.V.I.S',short_name:'JARVIS',start_url:location.href.split('#')[0],display:'standalone',orientation:'landscape',background_color:'#000000',theme_color:'#000000',icons:[{src:icon(512),sizes:'512x512',type:'image/png'}]})],{type:'application/manifest+json'}));
-/* Opcional (offline del cascarón): sube un sw.js con:
-   self.addEventListener('fetch',e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))));
-   self.addEventListener('install',e=>e.waitUntil(caches.open('j').then(c=>c.addAll(['./','./index.html']))));  */
-if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
-
-/* ---------- Reloj, clima, batería ---------- */
 function tick(){const d=new Date();$('#time').textContent=d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});$('#date').textContent=d.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'})}
 setInterval(tick,1000);tick();
 const WX=c=>c==0?'Despejado':c<4?'Parcialmente nublado':c<50?'Niebla':c<60?'Llovizna':c<70?'Lluvia':c<80?'Nieve':c<90?'Chubascos':'Tormenta';
 let wxTxt='Sin datos del clima.';
-function weather(){if(!navigator.geolocation)return;navigator.geolocation.getCurrentPosition(async p=>{try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`);const c=(await r.json()).current;$('#wx').textContent=WX(c.weather_code);$('#tp').textContent=Math.round(c.temperature_2m)+' °C';$('#hu').textContent=c.relative_humidity_2m+'% / '+Math.round(c.wind_speed_10m)+' km/h';wxTxt=`Hay ${WX(c.weather_code).toLowerCase()}, ${Math.round(c.temperature_2m)} grados y ${c.relative_humidity_2m} por ciento de humedad.`}catch{$('#wx').textContent='Sin conexión'}},()=>{$('#wx').textContent='Sin permiso GPS'},{timeout:10000})}
-setInterval(weather,900000);
-let batTxt='Safari no me deja leer la batería de este dispositivo.';
-if(navigator.getBattery)navigator.getBattery().then(b=>{const u=()=>{const p=Math.round(b.level*100);$('#bt').textContent=p+'%'+(b.charging?' ⚡':'');batTxt=`La batería está al ${p} por ciento${b.charging?' y cargando':''}.`};u();b.onlevelchange=b.onchargingchange=u});
-
-/* ---------- Casa (Atajos de iOS) ---------- */
+function weather(){if(!navigator.geolocation)return;navigator.geolocation.getCurrentPosition(async p=>{try{const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${p.coords.latitude}&longitude=${p.coords.longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m`);const c=(await r.json()).current;$('#wx').textContent=WX(c.weather_code);$('#tp').textContent=Math.round(c.temperature_2m)+' Â°C';$('#hu').textContent=c.relative_humidity_2m+'% / '+Math.round(c.wind_speed_10m)+' km/h';wxTxt=`Hay ${WX(c.weather_code).toLowerCase()}, ${Math.round(c.temperature_2m)} grados y ${c.relative_humidity_2m} por ciento de humedad.`}catch{$('#wx').textContent='Sin conexiÃ³n'}},()=>{$('#wx').textContent='Sin permiso GPS'},{timeout:10000})}
+setInterval(weather,900000);weather();
+if(navigator.getBattery)navigator.getBattery().then(b=>{const u=()=>{const p=Math.round(b.level*100);$('#bt').textContent=p+'%'+(b.charging?' â¡':'')};u();b.onlevelchange=b.onchargingchange=u});
 function runShortcut(name){location.href='shortcuts://x-callback-url/run-shortcut?name='+encodeURIComponent(name)+'&x-success='+encodeURIComponent(location.href.split('#')[0])}
 function renderCasa(){$('#devs').innerHTML=Object.keys(devs()).map(k=>`<div class="dev"><span class="dot ${state[k]?'on':''}"></span>${cap(k)} <span style="margin-left:auto;color:#fff">${state[k]?'ON':'OFF'}</span></div>`).join('')}
-function casa(key,on){const d=devs()[key];const name=d?(on?d.on:d.off):(on?'Encender ':'Apagar ')+cap(key);if(key==='todo')Object.keys(devs()).forEach(k=>state[k]=on);else state[key]=on;LS.set('jv_state',state);renderCasa();setTimeout(()=>runShortcut(name),1400);return `${on?'Encendiendo':'Apagando'} ${key==='todo'?'todo':'el '+key}, ${addr()}.`}
+function casa(key,on){const d=devs()[key];const name=d?(on?d.on:d.off):(on?'Encender ':'Apagar ')+cap(key);if(key==='todo')Object.keys(devs()).forEach(k=>state[k]=on);else state[key]=on;LS.set('jv_state',state);renderCasa();setTimeout(()=>runShortcut(name),1200);return `${on?'Encendiendo':'Apagando'} ${key==='todo'?'todo':'el '+key}, ${addr()}.`}
 renderCasa();
-
-/* ---------- Música sintética (WebAudio, sin archivos) ---------- */
 let AC,mAn,mGain,mOsc=[],playing=false;
 $('#bars').innerHTML='<i></i>'.repeat(16);
 function ctx(){if(!AC)AC=new (window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume();return AC}
-function music(on){ctx();if(on&&!playing){mAn=AC.createAnalyser();mAn.fftSize=64;mGain=AC.createGain();mGain.gain.value=.0001;const f=AC.createBiquadFilter();f.type='lowpass';f.frequency.value=900;const lfo=AC.createOscillator(),lg=AC.createGain();lfo.frequency.value=.15;lg.gain.value=400;lfo.connect(lg);lg.connect(f.frequency);lfo.start();mOsc=[lfo];[110,130.8,164.8,220,261.6,329.6].forEach((fr,i)=>{const o=AC.createOscillator();o.type=i%2?'sawtooth':'triangle';o.frequency.value=fr;o.detune.value=(i-2)*4;o.connect(f);o.start();mOsc.push(o)});f.connect(mGain);mGain.connect(mAn);mAn.connect(AC.destination);mGain.gain.exponentialRampToValueAtTime(.12,AC.currentTime+2);playing=true}else if(!on&&playing){mGain.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+1);const o=mOsc;setTimeout(()=>o.forEach(x=>x.stop()),1100);playing=false}$('#mus').textContent=playing?'Ambiente Stark ♪':'Detenida'}
+function music(on){ctx();if(on&&!playing){mAn=AC.createAnalyser();mAn.fftSize=64;mGain=AC.createGain();mGain.gain.value=.0001;const f=AC.createBiquadFilter();f.type='lowpass';f.frequency.value=900;const lfo=AC.createOscillator(),lg=AC.createGain();lfo.frequency.value=.15;lg.gain.value=400;lfo.connect(lg);lg.connect(f.frequency);lfo.start();mOsc=[lfo];[110,130.8,164.8,220,261.6,329.6].forEach((fr,i)=>{const o=AC.createOscillator();o.type=i%2?'sawtooth':'triangle';o.frequency.value=fr;o.detune.value=(i-2)*4;o.connect(f);o.start();mOsc.push(o)});f.connect(mGain);mGain.connect(mAn);mAn.connect(AC.destination);mGain.gain.exponentialRampToValueAtTime(.12,AC.currentTime+2);playing=true}else if(!on&&playing){mGain.gain.exponentialRampToValueAtTime(.0001,AC.currentTime+1);const o=mOsc;setTimeout(()=>o.forEach(x=>x.stop()),1100);playing=false}$('#mus').textContent=playing?'Ambiente Stark âª':'Detenida'}
 $('#mbtn').onclick=()=>music(!playing);
-
-/* ---------- Voz: síntesis ---------- */
 let speaking=false,voice=null;
 function pickVoice(){const v=speechSynthesis.getVoices().filter(x=>x.lang.toLowerCase().startsWith('es'));const pref=['Jorge','Diego','Juan','Eddy','Reed','Rocko','Grandpa','Carlos','Pablo'];voice=pref.map(p=>v.find(x=>x.name.includes(p))).find(Boolean)||v.find(x=>/male|hombre/i.test(x.name))||v[0]||null}
 if('speechSynthesis' in window){speechSynthesis.onvoiceschanged=pickVoice;pickVoice()}
 function say(t){$('#say').textContent=t;if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';if(voice)u.voice=voice;u.pitch=.5;u.rate=.9;u.volume=1;u.onstart=()=>{speaking=true;try{rec&&rec.stop()}catch{}};u.onend=u.onerror=()=>{speaking=false;if(listening)setTimeout(startRec,250)};speechSynthesis.speak(u)}
-
-/* ---------- Micrófono + anillo reactivo ---------- */
 let an=null,fd=null;
-async function startMic(){if(an)return;try{const s=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});const a=ctx();an=a.createAnalyser();an.fftSize=256;an.smoothingTimeConstant=.75;a.createMediaStreamSource(s).connect(an);fd=new Uint8Array(an.frequencyBinCount)}catch(e){$('#heard').textContent='Micrófono no disponible'}}
+async function startMic(){if(an)return;try{const s=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});const a=ctx();an=a.createAnalyser();an.fftSize=256;an.smoothingTimeConstant=.75;a.createMediaStreamSource(s).connect(an);fd=new Uint8Array(an.frequencyBinCount)}catch(e){$('#heard').textContent='MicrÃ³fono no disponible'}}
 const cv=$('#cv'),cx=cv.getContext('2d');let sm=0,rot=0;
 function fit(){const d=devicePixelRatio||1,r=cv.getBoundingClientRect();cv.width=r.width*d;cv.height=r.height*d}
 addEventListener('resize',fit);fit();
@@ -150,97 +127,143 @@ function draw(t){const W=cv.width,H=cv.height,X=W/2,Y=H/2,R=Math.min(W,H)*.27;cx
  if(playing&&mAn){const b=new Uint8Array(mAn.frequencyBinCount);mAn.getByteFrequencyData(b);document.querySelectorAll('#bars i').forEach((e,i)=>e.style.height=Math.max(3,b[i]/255*34)+'px')}
  requestAnimationFrame(draw)}
 requestAnimationFrame(draw);
-
-/* ---------- Cerebro: reglas tipo JARVIS + IA local opcional (WebLLM) ---------- */
 let engine=null,hist=[];
+async function loadLLM(){if(engine)return;
+ try{
+  $('#ai').textContent='Cargando 135MBâ¦';
+  const w=await import('https://esm.run/@mlc-ai/web-llm');
+  const onProgress = p=>{ try{$('#ai').textContent=Math.round((p.progress||0)*100)+'%';}catch{} };
+  try{
+   engine=await w.CreateMLCEngine('SmolLM2-135M-Instruct-q4f16_1-MLC',{initProgressCallback:onProgress});
+  }catch(e1){
+   engine=await w.CreateMLCEngine('Llama-3.2-1B-Instruct-q4f16_1-MLC',{initProgressCallback:onProgress});
+  }
+  $('#ai').textContent='IA Local â';$('#bAI').classList.add('on');
+  say('NÃºcleo de IA local en lÃ­nea, '+addr()+'. Ya funciono sin internet.');
+ }catch(e){
+  $('#ai').textContent='Error IA';
+  say('No pude cargar la IA local: '+(e.message||'').slice(0,120)+'. Activa WebGPU en Ajustes > Safari > Avanzado > Feature Flags > WebGPU, '+addr()+'.');
+ }
+}
+let palaceFiles=JSON.parse(localStorage.getItem('jv_files')||'[]');
+function saveFiles(){localStorage.setItem('jv_files',JSON.stringify(palaceFiles.slice(-80))); try{$('#fileCount').textContent=palaceFiles.length}catch{}}
+function addFileRecord(name,type,size,data){palaceFiles.push({t:Date.now(),name,type,size,dataFull:data}); if(palaceFiles.length>80) palaceFiles=palaceFiles.slice(-80); saveFiles();}
+saveFiles();
+const fotosInput=document.getElementById('fotosInput');
+const vPlayer=document.getElementById('vPlayer');
+const aPlayer=document.getElementById('aPlayer');
+const imgPlayer=document.getElementById('imgPlayer');
+const mediaLayer=document.getElementById('mediaLayer');
+const mediaInfo=document.getElementById('mediaInfo');
+function abrirArchivos(){fotosInput.click();}
+function cerrarMedia(){mediaLayer.classList.remove('show'); mediaLayer.style.display='none'; vPlayer.pause(); aPlayer.pause(); vPlayer.style.display='none'; aPlayer.style.display='none'; imgPlayer.style.display='none'; vPlayer.src=''; aPlayer.src='';}
+function reproducirMedia(item){
+  mediaLayer.style.display='flex'; mediaLayer.classList.add('show');
+  vPlayer.style.display='none'; aPlayer.style.display='none'; imgPlayer.style.display='none';
+  vPlayer.pause(); aPlayer.pause();
+  if(!item){mediaInfo.textContent='No hay archivos.';return;}
+  mediaInfo.textContent=item.name+' â¢ '+Math.round(item.size/1024)+'KB';
+  if(item.type.startsWith('video/')||item.name.match(/\.(mp4|mov|avi|mkv)$/i)){vPlayer.src=item.dataFull; vPlayer.style.display='block'; vPlayer.play().catch(()=>{});}
+  else if(item.type.startsWith('audio/')||item.name.match(/\.(mp3|m4a|wav|ogg|flac)$/i)){aPlayer.src=item.dataFull; aPlayer.style.display='block'; aPlayer.play().catch(()=>{});}
+  else if(item.type.startsWith('image/')){imgPlayer.src=item.dataFull; imgPlayer.style.display='block';}
+  else{mediaInfo.textContent=item.name+' (documento) '+Math.round(item.size/1024)+'KB guardado dentro de Jarvis';}
+  const listDiv=document.getElementById('mediaList');
+  listDiv.innerHTML=palaceFiles.slice(-12).reverse().map((f,i)=>`<button onclick="reproducirMedia(palaceFiles[palaceFiles.length-1-${i}])" style="font-size:10px;padding:6px 8px">${f.name.slice(0,18)}</button>`).join('');
+}
+fotosInput.onchange=e=>{
+  const files=e.target.files; if(!files.length) return;
+  Array.from(files).forEach(file=>{
+    const reader=new FileReader();
+    reader.onload=ev=>{addFileRecord(file.name,file.type||'application/octet-stream',file.size,ev.target.result); say('Archivo '+file.name+' guardado, '+addr()+'. Ya puedo reproducirlo aquÃ­ dentro.'); if(palaceFiles.length===1) reproducirMedia(palaceFiles[palaceFiles.length-1]);};
+    reader.readAsDataURL(file);
+  });
+};
+const dropZone=document.getElementById('dropZone');
+['dragenter','dragover'].forEach(ev=>{document.addEventListener(ev,e=>{e.preventDefault(); dropZone.style.display='flex';});});
+['dragleave','drop'].forEach(ev=>{document.addEventListener(ev,e=>{e.preventDefault(); if(ev==='drop' && e.dataTransfer.files.length){Array.from(e.dataTransfer.files).forEach(file=>{const r=new FileReader(); r.onload=ev2=>{addFileRecord(file.name,file.type,file.size,ev2.target.result); say('Archivo '+file.name+' recibido.');}; r.readAsDataURL(file);});} if(ev!=='dragover') dropZone.style.display='none';});});
+function buscarYReproducir(tipo){
+  if(!palaceFiles.length){say('No tengo archivos aÃºn, '+addr()+'. Toque ð ARCHIVOS.'); abrirArchivos(); return 'Sin archivos';}
+  let filtrados=palaceFiles;
+  if(tipo==='audio') filtrados=palaceFiles.filter(f=>f.type.startsWith('audio/')||f.name.match(/\.(mp3|m4a|wav|ogg)$/i));
+  if(tipo==='video') filtrados=palaceFiles.filter(f=>f.type.startsWith('video/')||f.name.match(/\.(mp4|mov|avi|mkv)$/i));
+  if(tipo==='image') filtrados=palaceFiles.filter(f=>f.type.startsWith('image/'));
+  if(!filtrados.length) filtrados=palaceFiles;
+  const item=filtrados[filtrados.length-1];
+  reproducirMedia(item);
+  return 'Reproduciendo '+item.name;
+}
+function mostrarGaleria(){
+  if(!palaceFiles.length){abrirArchivos(); return 'No hay archivos. Abra el selector.';}
+  mediaLayer.style.display='flex'; mediaLayer.classList.add('show');
+  vPlayer.style.display='none'; aPlayer.style.display='none'; imgPlayer.style.display='none';
+  mediaInfo.textContent='ð '+palaceFiles.length+' archivos dentro de Jarvis';
+  document.getElementById('mediaList').innerHTML=palaceFiles.slice().reverse().map((f,idx)=>`<button onclick="reproducirMedia(palaceFiles[${palaceFiles.length-1-idx}])" style="font-size:11px;padding:8px 10px;margin:3px">${f.type.startsWith('image/')?'ð¼ï¸':f.type.startsWith('video/')?'ð¬':f.type.startsWith('audio/')?'ðµ':'ð'} ${f.name.slice(0,20)}</button>`).join('');
+  return 'GalerÃ­a abierta';
+}
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
-async function loadLLM(){if(engine)return;if(!navigator.gpu){say('Este dispositivo no tiene WebGPU. Sigo con mi núcleo offline, '+addr()+'.');return}
- try{$('#ai').textContent='Cargando…';const w=await import('https://esm.run/@mlc-ai/web-llm');engine=await w.CreateMLCEngine('Qwen2.5-0.5B-Instruct-q4f16_1-MLC',{initProgressCallback:p=>{$('#ai').textContent=Math.round((p.progress||0)*100)+'%'}});$('#ai').textContent='Qwen 0.5B ✔';$('#bAI').classList.add('on');say('Núcleo de IA local en línea, '+addr()+'. Ya funciono sin internet.')}catch(e){$('#ai').textContent='Error';say('No pude cargar el modelo local, '+addr()+'. Continúo en modo offline.')}}
-async function think(raw){const q=N(raw).replace(/[¿?¡!.,]/g,'').trim(),n=addr();let m;
- if(m=q.match(/(?:me llamo|mi nombre es|llamame)\s+(.+)/)){user=cap(raw.trim().split(/\s+/).slice(-1)[0].replace(/[.,!?]/g,''));LS.set('jv_name',user);return `Entendido. A partir de ahora lo llamaré ${user}.`}
- if(/como me llamo|cual es mi nombre|quien soy/.test(q))return user==='Señor'?'Aún no me ha dicho su nombre, señor. Por ahora, solo "señor".':`Usted es ${user}, y mi único propósito es servirle.`;
- if(/olvida mi nombre/.test(q)){user='Señor';LS.set('jv_name',user);return 'Nombre borrado. Seguiré llamándole señor.'}
+async function think(raw){
+ const q=N(raw).replace(/[Â¿?Â¡!.,]/g,'').trim(),n=addr();let m;
+ if(m=q.match(/(?:me llamo|mi nombre es|llamame)\s+(.+)/)){user=cap(raw.trim().split(/\s+/).slice(-1)[0].replace(/[.,!?]/g,''));LS.set('jv_name',user);return `Entendido. A partir de ahora lo llamarÃ© ${user}.`}
+ if(/como me llamo|cual es mi nombre|quien soy/.test(q))return user==='SeÃ±or'?'AÃºn no me ha dicho su nombre, seÃ±or.':`Usted es ${user}, seÃ±or.`;
+ if(/olvida mi nombre/.test(q)){user='SeÃ±or';LS.set('jv_name',user);return 'Nombre borrado.'}
+ if(/^(mostrar|abrir|ver|ensenar).*?(fotos?|imagen|galeria|archivos?|documentos?)/.test(q) || q.includes('muestra fotos') || q.includes('ver archivos')){ mostrarGaleria(); return 'Abriendo su galerÃ­a, '+n+'. '+palaceFiles.length+' archivos dentro de Jarvis.'; }
+ if(/subir|enviar|mandar|cargar/.test(q) && /fotos?|videos?|archivos?|documentos?|imagen/.test(q)){ setTimeout(abrirArchivos,400); return 'Abriendo selector de archivos, '+n+'. Elija fotos, videos o documentos. Se quedan dentro de Jarvis.'; }
+ if(/pon.*(cancion|musica|audio|mp3)/.test(q) || q==='pon musica' || q.includes('pon una cancion')){ let r=buscarYReproducir('audio'); return r+', '+n+'. Reproduciendo aquÃ­ dentro, sin salir.'; }
+ if(/pon.*(video|pelicula|clip)/.test(q) || q.includes('pon un video') || /muestra.*video/.test(q)){ let r=buscarYReproducir('video'); return r+', '+n+'. Reproduciendo aquÃ­ dentro.'; }
+ if(/pon.*(foto|imagen)/.test(q)){ let r=buscarYReproducir('image'); return r+', '+n+'.'; }
+ if(/cierra.*(video|musica|foto|galeria|media|reproductor)/.test(q)){ cerrarMedia(); return 'Reproductor cerrado, '+n+'.'; }
  if(m=q.match(/\b(enciende|encender|prende|prender|apaga|apagar)\s+(?:la |el |los |las |toda la |todo el )?(.+)/)){const on=/^(enc|pren)/.test(m[1]);let k=m[2].trim();const found=Object.keys(devs()).find(d=>k.includes(d));return casa(found||k,on)}
  if(/\bhora\b/.test(q))return 'Son las '+new Date().toLocaleTimeString('es-ES',{hour:'numeric',minute:'2-digit'})+', '+n+'.';
  if(/\bfecha\b|que dia/.test(q))return 'Hoy es '+new Date().toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'})+'.';
  if(/clima|tiempo hace|temperatura/.test(q)){weather();return wxTxt}
- if(/bateria/.test(q))return batTxt;
- if(/(pon|reproduce|activa).*musica|musica on/.test(q)){music(true);return 'Reproduciendo ambiente, '+n+'.'}
- if(/(para|detene|quita|apaga).*musica|silencio/.test(q)){music(false);return 'Música detenida.'}
- if(/pantalla|que ves/.test(q)){verPantalla();return 'Activando sensores visuales.'}
- if(/gesto|mano/.test(q)){gestos();return 'Iniciando seguimiento de manos.'}
- if(/casa|luces/.test(q)){openCasa();return 'Panel de control doméstico, '+n+'.'}
- if(/control.*(ipad|voz)/.test(q)){openIpad();return 'Estas son las instrucciones de Control por Voz.'}
- if(m=q.match(/(?:cuanto es|calcula|cuanto son)\s+(.+)/)){const e=m[1].replace(/por|x/g,'*').replace(/entre|dividido/g,'/').replace(/mas/g,'+').replace(/menos/g,'-').replace(/,/g,'.');if(/^[\d+\-*/.() ]+$/.test(e)){try{return `El resultado es ${+Function('return '+e)().toFixed(4)}.`}catch{}}}
- if(/quien eres|que eres|como te llamas/.test(q))return 'Soy J.A.R.V.I.S., Just A Rather Very Intelligent System. Su asistente, '+n+'.';
- if(/gracias/.test(q))return rnd(['Es un placer, '+n+'.','Para eso estoy, '+n+'.']);
- if(/hola|buenas|buenos dias|buenas tardes|buenas noches/.test(q))return 'Sistemas en línea. Listo para servirle, '+n+'. ¿Qué necesita?';
- if(/chiste/.test(q))return rnd(['Le contaría uno sobre UDP, pero no sé si lo recibiría.','Dos bytes se encuentran. Uno dice: ¿te sientes mal? El otro: no, solo tengo un bit de sueño.','Un programador apaga las luces y dice: ya no hay bugs, solo oscuridad.']);
- if(/estado|sistemas|diagnostico/.test(q))return 'Todos los sistemas funcionan dentro de parámetros normales, '+n+'. '+(engine?'Núcleo de IA local activo.':'Operando en modo offline.');
- if(engine){try{hist.push({role:'user',content:raw});hist=hist.slice(-6);const r=await engine.chat.completions.create({messages:[{role:'system',content:`Eres J.A.R.V.I.S., el asistente de Tony Stark: elegante, ingenioso, leal, breve. Responde siempre en español, máximo dos frases. Llama al usuario "${n}".`},...hist],max_tokens:110,temperature:.6});const t=r.choices[0].message.content.trim();hist.push({role:'assistant',content:t});return t}catch{}}
- return rnd(['Entendido, '+n+'. Esa consulta excede mi núcleo offline; active IA LOCAL para conversación libre.','Lo anoto, '+n+'. Con la IA local activa podré responderle con más detalle.','No tengo una rutina para eso aún, '+n+'. Puedo manejar hora, clima, casa, música, cálculos y más.'])}
-async function handle(t){$('#heard').textContent='» '+t;const r=await think(t);say(r)}
-
-/* ---------- Reconocimiento de voz (español) ---------- */
+ if(/bateria/.test(q))return $('#bt').textContent;
+ if(/(pon|reproduce|activa).*musica/.test(q)){music(true);return 'Reproduciendo ambiente, '+n+'.'}
+ if(/(para|detene|quita|apaga).*musica|silencio/.test(q)){music(false);return 'MÃºsica detenida.'}
+ if(/quien eres|que eres/.test(q))return 'Soy J.A.R.V.I.S., su asistente, '+n+'.';
+ if(engine){try{hist.push({role:'user',content:raw});hist=hist.slice(-6);const r=await engine.chat.completions.create({messages:[{role:'system',content:`Eres J.A.R.V.I.S., elegante, breve, en espaÃ±ol. Usuario "${n}".`},...hist],max_tokens:110,temperature:.6});const t=r.choices[0].message.content.trim();hist.push({role:'assistant',content:t});return t}catch{}}
+ return rnd(['Entendido, '+n+'.','Lo anoto, '+n+'.','No tengo una rutina para eso aÃºn, '+n+'.']);
+}
+async function handle(t){$('#heard').textContent='Â» '+t;const r=await think(t);say(r)}
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;let rec=null,listening=false,awake=0;
 function startRec(){if(!SR||!listening||speaking)return;try{rec&&(rec.onend=null,rec.abort())}catch{}
  rec=new SR();rec.lang='es-ES';rec.continuous=true;rec.interimResults=true;
- rec.onresult=e=>{if(speaking)return;const r=e.results[e.results.length-1],t=r[0].transcript.trim();$('#heard').textContent='… '+t;if(!r.isFinal)return;
+ rec.onresult=e=>{if(speaking)return;const r=e.results[e.results.length-1],t=r[0].transcript.trim();$('#heard').textContent='â¦ '+t;if(!r.isFinal)return;
   const wake=/\b(hey |oye |ey )?(jarvis|yarvis|jarbis|yarbis|jervis)\b/i;const has=wake.test(t);
-  if(has||Date.now()<awake){const cmd=t.replace(wake,'').replace(/^[\s,]+/,'').trim();if(!cmd){awake=Date.now()+8000;say('Sí, '+addr()+'.');return}awake=Date.now()+8000;handle(cmd)}};
- rec.onerror=e=>{if(e.error==='not-allowed'){listening=false;$('#bHey').classList.remove('on');say('Permiso de reconocimiento denegado.')}};
+  if(has||Date.now()<awake){const cmd=t.replace(wake,'').replace(/^[\\s,]+/,'').trim();if(!cmd){awake=Date.now()+8000;say('SÃ­, '+addr()+'.');return}awake=Date.now()+8000;handle(cmd)}};
+ rec.onerror=e=>{if(e.error==='not-allowed'){listening=false;$('#bHey').classList.remove('on');}};
  rec.onend=()=>{if(listening&&!speaking)setTimeout(startRec,300)};
  try{rec.start()}catch{}}
-$('#bHey').onclick=async()=>{if(!SR){say('Este navegador no soporta reconocimiento de voz.');return}await startMic();
- if(listening){listening=false;try{rec.abort()}catch{};$('#bHey').classList.remove('on');$('#heard').textContent='';return}
- listening=true;awake=Date.now()+8000;$('#bHey').classList.add('on');say('Sí, '+addr()+'.');setTimeout(startRec,900)};
-
-/* ---------- Ver pantalla ---------- */
+$('#bHey').onclick=async()=>{if(!SR){say('Este navegador no soporta voz.');return}await startMic();
+ if(listening){listening=false;try{rec.abort()}catch{};$('#bHey').classList.remove('on');return}
+ listening=true;awake=Date.now()+8000;$('#bHey').classList.add('on');say('SÃ­, '+addr()+'.');setTimeout(startRec,900)};
 let scrStream=null;
 async function verPantalla(){if(scrStream){scrStream.getTracks().forEach(t=>t.stop());scrStream=null;$('#wscr')&&$('#wscr').remove();$('#bScr').classList.remove('on');return}
- let mode='pantalla';try{if(!navigator.mediaDevices.getDisplayMedia)throw 0;scrStream=await navigator.mediaDevices.getDisplayMedia({video:true})}catch{try{mode='cámara';scrStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}})}catch{say('No pude acceder a la pantalla ni a la cámara, '+addr()+'.');return}}
- const w=document.createElement('section');w.className='win';w.id='wscr';w.style.cssText='left:34%;top:52%;width:min(34vw,380px)';w.innerHTML=`<h3>VISIÓN · ${mode.toUpperCase()}<b onclick="verPantalla()">✕</b></h3><video id="vid" autoplay muted playsinline></video>`;document.body.appendChild(w);drag(w);$('#vid').srcObject=scrStream;$('#bScr').classList.add('on');
- say(mode==='pantalla'?'Sensores visuales en línea, '+addr()+'.':'iPadOS no permite compartir la pantalla desde Safari, '+addr()+'. Uso la cámara trasera como sensor óptico. Para grabar la pantalla use el Centro de Control.')}
+ let mode='pantalla';try{if(!navigator.mediaDevices.getDisplayMedia)throw 0;scrStream=await navigator.mediaDevices.getDisplayMedia({video:true})}catch{try{mode='cÃ¡mara';scrStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'environment'}})}catch{say('No pude acceder, '+addr()+'.');return}}
+ const w=document.createElement('section');w.className='win';w.id='wscr';w.style.cssText='left:34%;top:52%;width:min(34vw,380px)';w.innerHTML=`<h3>VISIÃN Â· ${mode.toUpperCase()}<b onclick="verPantalla()">â</b></h3><video id="vid" autoplay muted playsinline></video>`;document.body.appendChild(w);drag(w);$('#vid').srcObject=scrStream;$('#bScr').classList.add('on');}
 $('#bScr').onclick=verPantalla;
-
-/* ---------- Modales ---------- */
 function modal(h){$('#mbox').innerHTML=h+'<p style="text-align:right"><button onclick="$(\'#modal\').style.display=\'none\'">CERRAR</button></p>';$('#modal').style.display='flex'}
-function openCasa(){const l=Object.keys(devs()).map(k=>`<div class="dev"><span class="dot ${state[k]?'on':''}"></span><b>${cap(k)}</b><span style="margin-left:auto"><button onclick="casaUI('${k}',1)">ON</button> <button onclick="casaUI('${k}',0)">OFF</button></span></div>`).join('');
- modal(`<h2>CONTROLAR CASA</h2>${l}<p>Añadir dispositivo: <input id="nd" placeholder="ej. cocina"> <button onclick="addDev()">+</button></p><p style="color:#7fb">Crea en Atajos los atajos <code>Encender [Nombre]</code> y <code>Apagar [Nombre]</code> con la acción "Controlar mi casa". Por voz: "Jarvis, enciende el taller" / "apaga todo". Al ejecutarse, iOS abre Atajos un instante y vuelve.</p>`)}
+function openCasa(){const l=Object.keys(devs()).map(k=>`<div class="dev"><span class="dot ${state[k]?'on':''}"></span><b>${cap(k)}</b><span style="margin-left:auto"><button onclick="casaUI('${k}',1)">ON</button> <button onclick="casaUI('${k}',0)">OFF</button></span></div>`).join(''); modal(`<h2>CONTROLAR CASA</h2>${l}<p>AÃ±adir: <input id="nd" placeholder="ej. cocina"> <button onclick="addDev()">+</button></p>`)}
 window.casaUI=(k,o)=>{say(casa(k,!!o));openCasa()};
 window.addDev=()=>{const k=N($('#nd').value.trim());if(!k)return;extra[k]={on:'Encender '+cap(k),off:'Apagar '+cap(k)};LS.set('jv_dev',extra);renderCasa();openCasa()};
-function openIpad(){modal(`<h2>CONTROLAR IPAD</h2><p>iOS no permite que una web controle el iPad. La forma real es el <b>Control por Voz</b> del sistema:</p><ol><li>Ajustes → Accesibilidad → <b>Control por voz</b> → Activar.</li><li>Di: <code>Mostrar números</code> o <code>Mostrar cuadrícula</code> para tocar cualquier cosa por voz.</li><li>Comandos: <code>Abrir Safari</code>, <code>Ir a inicio</code>, <code>Desplazar abajo</code>, <code>Tocar 12</code>, <code>Subir volumen</code>.</li><li>Ajustes → Accesibilidad → Control por voz → <b>Comandos</b> → crea comandos propios que ejecuten un Atajo.</li></ol>`)}
-function openInst(){modal(`<h2>INSTALAR EN iPAD</h2><ol><li>Sube <code>index.html</code> a GitHub Pages (HTTPS es obligatorio).</li><li>Ábrelo en <b>Safari</b>.</li><li>Toca Compartir → <b>"Agregar a pantalla de inicio"</b>.</li><li>Ábrela desde el icono: pantalla completa, como app real.</li></ol>`)}
+function openIpad(){modal(`<h2>CONTROLAR IPAD</h2><p>Use Control por Voz de iOS en Ajustes > Accesibilidad > Control por voz.</p>`)}
+function openInst(){modal(`<h2>INSTALAR EN IPAD</h2><ol><li>Suba index.html a GitHub Pages.</li><li>Ãbralo en Safari.</li><li>Compartir > Agregar a pantalla de inicio.</li></ol>`)}
 $('#bCasa').onclick=openCasa;$('#bIpad').onclick=openIpad;$('#bInst').onclick=openInst;$('#bAI').onclick=loadLLM;
-
-/* ---------- Ventanas arrastrables (táctil) ---------- */
 function place(w,x,y){x=Math.max(0,Math.min(innerWidth-w.offsetWidth,x));y=Math.max(0,Math.min(innerHeight-w.offsetHeight,y));w.style.left=x+'px';w.style.top=y+'px';w.style.right='auto';w.style.bottom='auto'}
-function drag(w){let o=null;w.addEventListener('pointerdown',e=>{if(e.target.closest('button,b,#mbtn'))return;const b=w.getBoundingClientRect();o={dx:e.clientX-b.left,dy:e.clientY-b.top};w.setPointerCapture(e.pointerId)});w.addEventListener('pointermove',e=>{if(o)place(w,e.clientX-o.dx,e.clientY-o.dy)});w.addEventListener('pointerup',()=>o=null)}
+function drag(w){let o=null;w.addEventListener('pointerdown',e=>{if(e.target.closest('button,b,#mbtn'))return;const b=w.getBoundingClientRect();o={dx:e.clientX-b.left,dy:e.clientY-b.top};w.setPointerCapture(e.pointerId)});w.addEventListener('pointermove',e=>{if(!o)return;place(w,e.clientX-o.dx,e.clientY-o.dy)});w.addEventListener('pointerup',e=>{o=null;try{w.releasePointerCapture(e.pointerId)}catch{}});w.addEventListener('pointercancel',()=>o=null)}
 document.querySelectorAll('.win').forEach(drag);
-
-/* ---------- Gestos: MediaPipe Hands (mano abierta = arrastra ventana) ---------- */
-const MP='https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/';let gOn=false,grab=null,hx=0,hy=0;
-const load=s=>new Promise((r,j)=>{const e=document.createElement('script');e.src=s;e.crossOrigin='anonymous';e.onload=r;e.onerror=j;document.head.appendChild(e)});
-async function gestos(){if(gOn){gOn=false;$('#bGes').classList.remove('on');$('#cam').style.display='none';$('#hand').style.display='none';const s=$('#cam').srcObject;s&&s.getTracks().forEach(t=>t.stop());return}
- try{if(!window.Hands)await load(MP+'hands.js');const cam=$('#cam');cam.srcObject=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:640,height:480}});await cam.play();cam.style.display='block';
-  const h=new Hands({locateFile:f=>MP+f});h.setOptions({maxNumHands:1,modelComplexity:0,minDetectionConfidence:.6,minTrackingConfidence:.5});h.onResults(onHand);gOn=true;$('#bGes').classList.add('on');say('Seguimiento de manos activo. Abra la mano sobre una ventana para moverla, y cierre el puño para soltarla.');
-  (async function loop(){if(!gOn)return;try{await h.send({image:cam})}catch{}requestAnimationFrame(loop)})()}catch(e){say('No pude iniciar los gestos, '+addr()+'. Revise el permiso de cámara y la conexión.')}}
-function onHand(r){const L=r.multiHandLandmarks&&r.multiHandLandmarks[0],H=$('#hand');if(!L){H.style.display='none';grab=null;return}
- const p=L[9],tx=(1-p.x)*innerWidth,ty=p.y*innerHeight;hx+=(tx-hx)*.35;hy+=(ty-hy)*.35;
- let up=0;[[8,6],[12,10],[16,14],[20,18]].forEach(([t,b])=>{if(L[t].y<L[b].y)up++});const open=up>=3,fist=up<=1;
- H.style.display='block';H.style.transform=`translate(${hx-30}px,${hy-30}px)`;H.className=grab?'grab':open?'open':'';
- if(open&&!grab){const w=document.elementsFromPoint(hx,hy).map(e=>e.closest('.win')).find(Boolean);if(w){const b=w.getBoundingClientRect();grab={w,dx:hx-b.left,dy:hy-b.top}}}
- if(fist)grab=null;if(grab)place(grab.w,hx-grab.dx,hy-grab.dy)}
-$('#bGes').onclick=gestos;
-
-  <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-
-/* ---------- Arranque ---------- */
-$('#bStart').onclick=async()=>{$('#boot').style.display='none';ctx();await startMic();weather();setTimeout(()=>say(user==='Señor'?'Sistemas en línea. Listo para servirle, señor. ¿Qué necesita?':`Sistemas en línea. Listo para servirle, ${user}. ¿Qué necesita?`),300)};
+let gOn=false;
+$('#bGes').onclick=async()=>{
+ if(gOn){gOn=false;$('#bGes').classList.remove('on');$('#hand').style.display='none';return}
+ gOn=true;$('#bGes').classList.add('on');$('#hand').style.display='block';say('Gestos activados, '+addr()+'.');
+ try{
+  if(!window.Hands){
+   const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js';document.head.appendChild(s);
+   await new Promise(r=>s.onload=r);
+  }
+  const cam=$('#cam');cam.srcObject=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:640,height:480}});await cam.play();cam.style.display='block';
+ }catch(e){say('No pude iniciar gestos, revise permiso de cÃ¡mara.')}
+};
+$('#bStart').onclick=async()=>{$('#boot').style.display='none';ctx();await startMic();weather();setTimeout(()=>say(user==='SeÃ±or'?'Sistemas en lÃ­nea. Listo para servirle, seÃ±or.':'Sistemas en lÃ­nea. Listo para servirle, '+user+'.'),300)};
 </script>
 </body>
 </html>
